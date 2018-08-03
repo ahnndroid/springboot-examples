@@ -50,6 +50,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public void update(User newUser) {
+		// TODO Auto-generated method stub
+		this.password = newUser.getPassword();
+		this.name = newUser.getName();
+		this.userId = newUser.getUserId();
+		this.email = newUser.getEmail();
+	}
 
 	@Override
 	public String toString() {
