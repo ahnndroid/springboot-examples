@@ -24,11 +24,22 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	/**
+	 * 로그인 Form 페이지 방문
+	 * @return
+	 */
 	@GetMapping("/login")
 	public String login_form() {
 		return "/user/login";
 	}
 	
+	/**
+	 * 로그인 처리
+	 * @param userId
+	 * @param password
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/login")
 	public String login(String userId, String password, HttpSession session) {
 		User user = userRepository.findByUserId(userId);
@@ -48,9 +59,15 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/";
+	}
  
 	/**
-	 * 회원가입 페이지 방문
+	 * 회원가입 Form 페이지 방문
 	 * @return
 	 */
 	@GetMapping("/signup")
