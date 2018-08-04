@@ -3,6 +3,8 @@ package io.ahnndroid.springbootexamples.controller.user;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,31 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@GetMapping("/login")
+	public String login_form() {
+		return "/user/login";
+	}
+	
+	@PostMapping("/login")
+	public String login(String userId, String password, HttpSession session) {
+		User user = userRepository.findByUserId(userId);
+		
+		if (user == null) {
+			System.out.println("Login Failed!");
+			return "redirect:/users/login";
+		}
+		
+		if (!password.equals(user.getPassword())) {
+			System.out.println("Login Failed!");
+			return "redirect:/users/login";
+		}
+		
+		System.out.println("Login Success!");
+		session.setAttribute("user", user);
+		
+		return "redirect:/";
+	}
  
 	/**
 	 * 회원가입 페이지 방문
