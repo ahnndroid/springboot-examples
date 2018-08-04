@@ -1,4 +1,4 @@
-package io.ahnndroid.springbootexamples.web;
+package io.ahnndroid.springbootexamples.controller.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,11 +8,12 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() {
-		return "index";
+		return "/home/index";
 	}
 	
 	@GetMapping("/index*")
 	public String index() {
-		return "index";
+		return "/home/index";
 	}
+	
 }

@@ -1,4 +1,4 @@
-package io.ahnndroid.springbootexamples;
+package com.ahnndroid.springboot_study_review;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootExamplesApplicationTests {
+public class SpringbootStudyReviewApplicationTests {
 
 	@Test
 	public void contextLoads() {
